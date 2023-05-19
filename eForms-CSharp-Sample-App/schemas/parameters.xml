@@ -1,0 +1,18 @@
+﻿<xsd xmlns='http://microsoft.com/dotnet/tools/xsd/'>
+	<generateClasses language='CS' namespace='eForms_CSharp_Sample_App.Schemas'>
+		<schema>.\maindoc\EFORMS-BusinessRegistrationInformationNotice.xsd</schema>
+		<schema>.\maindoc\UBL-ContractAwardNotice-2.3.xsd</schema>
+		<schema>.\maindoc\UBL-ContractNotice-2.3.xsd</schema>
+		<schema>.\maindoc\UBL-PriorInformationNotice-2.3.xsd</schema>
+		<schema>.\common\BDNDR-CCTS_CCT_SchemaModule-1.1.xsd</schema>
+		<schema>.\common\BDNDR-UnqualifiedDataTypes-1.1.xsd</schema> 
+		<schema>.\common\EFORMS-ExtensionAggregateComponents-2.3.xsd</schema> 
+		<schema>.\common\EFORMS-ExtensionApex-2.3.xsd</schema> 
+		<schema>.\common\EFORMS-ExtensionBasicComponents-2.3.xsd</schema> 
+		<schema>.\common\UBL-CommonAggregateComponents-2.3.xsd</schema> 
+		<schema>.\common\UBL-CommonBasicComponents-2.3.xsd</schema> 
+		<schema>.\common\UBL-CommonExtensionComponents-2.3.xsd</schema> 
+		<schema>.\common\UBL-ExtensionContentDataType-2.3.xsd</schema> 
+		<schema>.\common\UBL-QualifiedDataTypes-2.3.xsd</schema>
+	</generateClasses>
+</xsd>
