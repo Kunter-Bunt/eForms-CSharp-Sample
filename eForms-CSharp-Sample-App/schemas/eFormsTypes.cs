@@ -569,7 +569,7 @@ namespace eForms_CSharp_Sample_App.Schemas {
             }
         }
 
-        // Manual change from typeof(AppealStatusType) to typeof(AppealStatusType[]) here!
+        // Manual change from typeof(AppealStatusType) to typeof(AppealStatusType[]) here! See https://github.com/dotnet/wcf/issues/2219#issuecomment-328673165 for more details
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Namespace="http://data.europa.eu/p27/eforms-ubl-extension-aggregate-components/1")]
         [System.Xml.Serialization.XmlArrayItemAttribute("AppealStatus", typeof(AppealStatusType[]), IsNullable=false)]
