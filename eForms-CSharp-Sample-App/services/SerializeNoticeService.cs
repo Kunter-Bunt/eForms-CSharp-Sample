@@ -22,4 +22,3 @@ namespace eForms_CSharp_Sample_App.services
         }
     }
 }
-//< ContractNotice  xmlns = "urn:oasis:names:specification:ubl:schema:xsd:ContractNotice-2"  xmlns: xsi = "http://www.w3.org/2001/XMLSchema-instance" >
