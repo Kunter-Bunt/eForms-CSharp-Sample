@@ -12,10 +12,14 @@ namespace eForms_CSharp_Sample_App.models
         {
             ProcessId = Guid.NewGuid();
             CompanyName = "MyTestCompany";
+            CompanyName = "https://MyTestCompany.com";
+            UID = "ATU12345";
             NoticeType = NoticeTypeEnum.ConcessionNotice;
         }
         public Guid ProcessId { get; set; }
         public string CompanyName { get; set; }
+        public string Website { get; set; }
+        public string UID { get; set; }
         public NoticeTypeEnum NoticeType { get; set; }
     }
 
