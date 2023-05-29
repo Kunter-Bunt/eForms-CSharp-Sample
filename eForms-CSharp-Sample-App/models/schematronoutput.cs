@@ -1,4 +1,5 @@
-﻿namespace eForms_CSharp_Sample_App.models
+﻿// Generated with the "Paste XML as Classes"
+namespace eForms_CSharp_Sample_App.models
 {
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     /// <remarks/>

@@ -1,4 +1,5 @@
 ﻿using eForms_CSharp_Sample_App.clients;
+using eForms_CSharp_Sample_App.clients.PublicationApi;
 using eForms_CSharp_Sample_App.clients.ValidationApi;
 using eForms_CSharp_Sample_App.extensions;
 using eForms_CSharp_Sample_App.models;
@@ -28,7 +29,7 @@ IConfiguration config = new ConfigurationBuilder()
 Console.WriteLine("Please enter Api Key:");
 var apiKey = Console.ReadLine() ?? throw new InvalidOperationException("Please enter Api Key!");
 var factory = new ClientFactory(config, apiKey);
-var client = factory.GetValidationClient();
+var validationClient = factory.GetValidationClient();
 
 var request = new InputNoticeValidation
 {
@@ -38,8 +39,8 @@ var request = new InputNoticeValidation
     Notice = serializedNotice
 };
 Console.WriteLine("Validating a notice");
-var response = await client.V1NoticesValidationAsync(factory.ApiKey, request);
-var schematronoutput = response.DeserializeAsShematron();
+var validationResponse = await validationClient.V1NoticesValidationAsync(factory.ApiKey, request);
+var schematronoutput = validationResponse.DeserializeAsShematron();
 
 if (schematronoutput?.HasErrors() == true)
 {
@@ -48,6 +49,23 @@ if (schematronoutput?.HasErrors() == true)
 }
 else
     Console.WriteLine("No Validation Errors!");
+
+Console.WriteLine($"Do you also want to try to publish the notice to {factory.PublicationApiUrl}? [Y/N]");
+var answer = Console.ReadLine() ?? throw new InvalidOperationException("Please enter Api Key!");
+if (answer.StartsWith("y", StringComparison.OrdinalIgnoreCase))
+{
+    var publicationClient = factory.GetPublicationClient();
+    var metadata = new Metadata
+    {
+        NoticeAuthorEmail = config.GetSection("Settings")["PublicationMail"],
+        NoticeAuthorLocale = "en",
+    };
+    var notice = new FileParameter(new MemoryStream(serializedNotice), $"{mappedNotice.ID.Value}.xml", "text/xml");
+    Console.WriteLine("Publishing a notice");
+    var publicationResponse = await publicationClient.SubmitNoticeAsync(notice, metadata);
+    Console.WriteLine($"Publication Result: {publicationResponse.Success}");
+    Console.WriteLine($"Validation Report: {publicationResponse.ValidationReportUrl}");
+}
 
 Console.WriteLine("Done");
 Console.ReadLine();
