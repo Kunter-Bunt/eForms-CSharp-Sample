@@ -23,6 +23,7 @@ namespace eForms_CSharp_Sample_App.services
             notice.ID = CreateConformingGuid();
             notice.UBLExtensions = BuildUBLExtensions(model);
             notice.UBLVersionID = new UBLVersionIDType { Value = UblVersion };
+            notice.VersionID = new VersionIDType { Value = "01" };
             notice.CustomizationID = new CustomizationIDType { Value = EFormsVersion };
             notice.ContractingParty = new ContractingPartyType[] { BuildContractingParty() };
             notice.ProcurementProject = BuildProcurementProject(model);
